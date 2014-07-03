@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-import serial
-import time
-#import sh
+from serial import serial
+from time import sleep
 from sh import hostname
 s = serial.serial()
 s.baudrate = 9600
@@ -12,4 +11,13 @@ try:
 	s.open()
 except serial.serialexception, e:
 	sys.stder.write("port could not be opened %r: %s\n" % (s.port,e))
-#write the code to print
+	sys.exit(1)
+
+s.write("$$$ALL,OFF\r")
+time.sleep(0.5)
+#coverting string 
+while True:
+	s.write("")
+	time.sleep(0.5)
+	s.write("")
+	time.sleep(0.5)
